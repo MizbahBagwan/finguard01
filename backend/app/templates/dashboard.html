@@ -1,0 +1,893 @@
+{% extends "base.html" %}
+
+{% block title %}Dashboard - FinGuard AI{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{{ url_for('static', path='css/dashboard.css') }}">
+<!-- FinGuard AI Global Theme -->
+<link
+    rel="stylesheet"
+    href="{{ url_for('static', path='css/theme.css') }}"
+>
+{% endblock %}
+
+
+{% block content %}
+<!-- ==========================================
+HERO SECTION
+========================================== -->
+
+<!-- =========================================================
+     CLEAN PREMIUM HERO SECTION
+========================================================= -->
+
+<section class="dashboard-hero">
+
+    <!-- LEFT CONTENT -->
+    <div class="hero-content">
+
+        <div class="hero-top">
+
+            <span class="hero-tag">
+                <i class="fa-solid fa-shield-halved"></i>
+                AI Powered Financial Security
+            </span>
+
+            <span class="hero-online">
+                <span class="hero-online-dot"></span>
+                AI ONLINE
+            </span>
+
+        </div>
+
+
+        <h1 class="hero-main-title">
+            AI Fraud Detection
+            <span>Control Center</span>
+        </h1>
+
+
+        <p class="hero-description">
+            Monitor financial transactions in real time, detect suspicious
+            activities, analyze fraud using artificial intelligence, and
+            protect every transaction through intelligent risk assessment.
+        </p>
+
+
+        <div class="hero-buttons">
+
+            <a href="/transactions" class="hero-primary-btn">
+                <i class="fa-solid fa-credit-card"></i>
+                View Transactions
+            </a>
+
+
+            <button
+                id="runAIAnalysis"
+                class="hero-secondary-btn">
+
+                <i class="fa-solid fa-brain"></i>
+                Run AI Analysis
+
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- RIGHT AI STATUS -->
+    <div class="hero-status-card">
+
+        <div class="hero-status-header">
+
+            <div class="hero-engine">
+
+                <div class="hero-engine-icon">
+                    <i class="fa-solid fa-shield-halved"></i>
+                </div>
+
+                <div>
+                    <strong>
+                        AI Engine Online
+                    </strong>
+
+                    <small>
+                        Real-Time Monitoring
+                    </small>
+                </div>
+
+            </div>
+
+
+            <span class="hero-live-badge">
+                LIVE
+            </span>
+
+        </div>
+
+
+        <div class="hero-status-divider"></div>
+
+
+        <!-- ACCURACY -->
+        <div class="hero-status-item">
+
+            <div>
+                <span>Detection Accuracy</span>
+            </div>
+
+            <strong id="aiAccuracy">
+                99.82%
+            </strong>
+
+        </div>
+
+
+        <!-- LAST UPDATED -->
+        <div class="hero-status-item">
+
+            <div>
+                <span>Last Updated</span>
+            </div>
+
+            <strong id="currentTime">
+                Loading...
+            </strong>
+
+        </div>
+
+
+        <!-- SYSTEM STATUS -->
+        <div class="hero-status-item">
+
+            <div>
+                <span>System Status</span>
+            </div>
+
+            <strong class="hero-operational">
+                <span class="status-check">
+                    ●
+                </span>
+                Operational
+            </strong>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- =====================================================
+     POTENTIAL FRAUD DETECTION
+====================================================== -->
+
+<section class="glass-card potential-fraud-card">
+
+    <div class="card-header">
+
+        <div>
+            <h3>
+                <i class="fa-solid fa-shield-halved"></i>
+                Potential Fraud Detection
+            </h3>
+
+            <p>
+                AI-detected transactions requiring attention
+            </p>
+        </div>
+
+        <span class="fraud-live-badge">
+            <span></span>
+            AI MONITORING
+        </span>
+
+    </div>
+
+    <div
+        id="potentialFraudList"
+        class="potential-fraud-list">
+
+
+        <div class="fraud-loading">
+            Loading fraud intelligence...
+        </div>
+
+    </div>
+
+</section>
+<!-- ==========================================
+STATISTICS
+========================================== -->
+
+<section class="stats-grid">
+
+    <div class="stat-card">
+
+        <div class="icon blue">
+
+            <i class="fa-solid fa-credit-card"></i>
+
+        </div>
+
+        <div>
+
+            <span>Total Transactions</span>
+
+            <h2 id="totalTransactions">
+
+                0
+
+            </h2>
+
+            <small>
+
+                +15% This Week
+
+            </small>
+       <div class="mini-line-chart blue-chart">
+    <svg viewBox="0 0 120 40">
+        <polyline points="0,30 20,26 40,28 60,18 80,20 100,10 120,14"/>
+    </svg>
+</div>
+
+
+        </div>
+
+    </div>
+
+    <div class="stat-card">
+
+        <div class="icon red">
+
+            <i class="fa-solid fa-triangle-exclamation"></i>
+
+        </div>
+
+        <div>
+
+            <span>High Risk</span>
+
+            <h2 id="highRisk">
+
+                0
+
+            </h2>
+        <div class="mini-line-chart red-chart">
+    <svg viewBox="0 0 120 40">
+        <polyline points="0,15 20,20 40,12 60,25 80,18 100,30 120,22"/>
+    </svg>
+</div>
+            <small>
+
+                Immediate Action
+
+            </small>
+
+        </div>
+
+    </div>
+
+    <div class="stat-card">
+
+        <div class="icon orange">
+
+            <i class="fa-solid fa-shield-halved"></i>
+
+        </div>
+
+        <div>
+
+            <span>Medium Risk</span>
+
+            <h2 id="mediumRisk">
+
+                0
+
+            </h2>
+      <div class="sparkline orange-chart">
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+</div>
+
+            <small>
+
+                AI Monitoring
+
+            </small>
+
+        </div>
+
+    </div>
+
+    <div class="stat-card">
+
+        <div class="icon green">
+
+            <i class="fa-solid fa-circle-check"></i>
+
+        </div>
+
+        <div>
+
+            <span>Safe Transactions</span>
+
+            <h2 id="safeTransactions">
+
+                0
+
+            </h2>
+          <div class="mini-line-chart green-chart">
+    <svg viewBox="0 0 120 40">
+        <polyline points="0,22 15,22 25,18 35,24 50,20 65,20 80,12 95,15 120,8"/>
+    </svg>
+</div>
+            <small>
+
+                Successfully Verified
+
+            </small>
+
+        </div>
+
+    </div>
+
+</section>
+<!-- ==========================================
+ANALYTICS SECTION
+========================================== -->
+<!-- AI SECURITY CORE -->
+
+<div class="ai-core-card">
+
+
+    <div class="card-header ai-core-header">
+
+
+        <h3>
+
+            <i class="fa-solid fa-cube"></i>
+
+            AI Security Core
+
+        </h3>
+
+
+
+        <div class="ai-status-live">
+
+            <span class="live-dot"></span>
+
+            AI ONLINE
+
+        </div>
+
+
+    </div>
+
+
+
+
+    <div class="ai-core-container">
+
+
+        <div id="ai3DScene"></div>
+
+
+
+        <!-- Floating Stats -->
+
+
+        <div class="core-stat left-stat">
+
+
+            <i class="fa-solid fa-shield-halved"></i>
+
+            <div>
+
+                <strong>99.8%</strong>
+
+                <span>Accuracy</span>
+
+            </div>
+
+
+        </div>
+        <div class="glass-card">
+
+    <div class="card-header">
+
+        <h3>
+            <i class="fa-solid fa-robot"></i>
+            AI Insights
+        </h3>
+
+        <span class="fraud-live-badge">
+            <span></span>
+            LIVE
+        </span>
+
+    </div>
+
+    <div id="aiInsights">
+
+        <div class="insight info">
+
+            <i class="fa-solid fa-robot"></i>
+
+            <div>
+                <strong>AI Monitoring</strong>
+
+                <p>
+                    Monitoring live transactions...
+                </p>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+
+
+        <div class="core-stat right-stat">
+
+
+            <i class="fa-solid fa-bolt"></i>
+
+
+            <div>
+
+                <strong>ACTIVE</strong>
+
+                <span>Threat Scan</span>
+
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+
+</div>
+
+<!-- ==============================
+     ANALYTICS TOP ROW
+================================ -->
+
+<div class="analytics-row">
+
+
+    <!-- RISK DISTRIBUTION -->
+
+    <div class="glass-card chart-card premium-chart">
+
+
+        <div class="card-header">
+
+
+            <h3>
+
+                <i class="fa-solid fa-chart-pie"></i>
+
+                Risk Distribution
+
+            </h3>
+
+
+
+            <button class="card-btn">
+
+                Today
+
+            </button>
+
+
+        </div>
+
+
+
+
+        <div class="risk-chart-area">
+
+
+            <canvas id="riskDistributionChart"></canvas>
+
+
+
+            <div class="risk-center">
+
+
+                <span>
+                    AI RISK
+                </span>
+
+
+                <strong>
+                    LIVE
+                </strong>
+
+
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+
+
+
+
+
+
+    <!-- AI RISK INTELLIGENCE -->
+
+
+    <div class="glass-card chart-card premium-chart">
+
+
+        <div class="card-header">
+
+
+            <h3>
+
+                <i class="fa-solid fa-brain"></i>
+
+                AI Risk Intelligence
+
+            </h3>
+
+
+
+            <button class="card-btn active">
+
+                Live
+
+            </button>
+
+
+        </div>
+
+
+
+
+        <div class="ai-chart-area">
+
+
+            <canvas id="aiRiskChart"></canvas>
+
+
+
+            <div class="ai-status">
+
+
+                <span class="pulse"></span>
+
+
+                AI Monitoring
+
+
+            </div>
+
+
+        </div>
+
+
+
+    </div>
+
+
+
+</div>
+
+
+
+
+
+
+
+
+<!-- ==============================
+        FRAUD TREND
+================================ -->
+
+
+<div class="glass-card chart-card premium-chart fraud-card">
+
+
+    <div class="card-header">
+
+
+        <h3>
+
+
+            <i class="fa-solid fa-chart-line"></i>
+
+
+            Fraud Trend
+
+
+        </h3>
+
+
+
+        <button class="card-btn">
+
+            Weekly
+
+        </button>
+
+
+    </div>
+
+
+
+
+    <div class="chart-container">
+
+
+        <canvas id="fraudTrendChart"></canvas>
+
+
+    </div>
+
+
+
+</div>
+<!-- ==========================================
+RECENT TRANSACTIONS
+========================================== -->
+
+<!-- RECENT TRANSACTIONS -->
+
+<div class="glass-card transaction-card">
+
+
+    <div class="card-header">
+
+        <h3>
+
+            <i class="fa-solid fa-clock-rotate-left"></i>
+
+            Recent Transactions
+
+        </h3>
+
+
+        <a href="/transactions" class="view-all">
+
+            View All →
+
+        </a>
+
+    </div>
+
+
+
+    <div class="transaction-table-wrapper">
+
+
+        <table class="transaction-table ai-table">
+
+
+            <thead>
+
+                <tr>
+
+                    <th>ID</th>
+
+                    <th>Merchant</th>
+
+                    <th>Amount</th>
+
+                    <th>Risk</th>
+
+                    <th>Status</th>
+
+                    <th>AI Score</th>
+
+                </tr>
+
+            </thead>
+
+
+
+            <tbody id="recentTransactionsBody">
+
+                <!-- JS DATA -->
+
+            </tbody>
+
+
+        </table>
+
+
+    </div>
+
+
+</div>
+
+
+
+
+
+
+
+<!-- ==========================================
+BOTTOM SECTION
+========================================== -->
+
+<section class="dashboard-grid">
+
+    <!-- LIVE THREATS -->
+
+    <div class="glass-card">
+
+        <div class="card-header">
+
+            <h3>
+
+                <i class="fa-solid fa-shield-virus"></i>
+
+                Live Threat Feed
+
+            </h3>
+
+        </div>
+
+        <div class="activity-list">
+
+            <div class="activity danger">
+
+                <div class="dot ${
+    t.risk==="Medium"
+    ? "orange"
+    : "red"
+}"></div>
+
+                <div>
+
+                    <strong>Unknown Merchant</strong>
+
+                    <p>₹24,500 blocked by AI</p>
+
+                    <small>2 min ago</small>
+
+                </div>
+
+            </div>
+
+            <div class="activity warning">
+
+                <div class="dot orange"></div>
+
+                <div>
+
+                    <strong>Suspicious Login</strong>
+
+                    <p>New device detected</p>
+
+                    <small>5 min ago</small>
+
+                </div>
+
+            </div>
+
+            <div class="activity success">
+
+                <div class="dot green"></div>
+
+                <div>
+
+                    <strong>Payment Approved</strong>
+
+                    <p>Amazon Transaction</p>
+
+                    <small>8 min ago</small>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- AI PERFORMANCE -->
+
+    <div class="glass-card">
+
+        <div class="card-header">
+
+            <h3>
+
+                <i class="fa-solid fa-microchip"></i>
+
+                AI Performance
+
+            </h3>
+
+        </div>
+
+        <div class="performance-grid">
+
+            <div class="performance-item">
+
+                <h2 id="dashboardAccuracy">0%</h2>
+
+                <span>Accuracy</span>
+
+            </div>
+
+            <div class="performance-item">
+
+    <h2 id="avgDetection">
+        
+        0
+
+    </h2>
+
+    <span>Avg Risk Score</span>
+
+</div>
+
+            <div class="performance-item">
+
+               <h2 id="dashboardTotalTransactions">0</h2>
+
+                <span>Transactions</span>
+
+            </div>
+
+            <div class="performance-item">
+
+                <h2 id="fraudsFound">0</h2>
+
+                <span>Frauds Found</span>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ==========================================
+FOOTER
+========================================== -->
+
+<footer class="dashboard-footer">
+
+    <div>
+
+        © 2025 FinGuard AI
+
+    </div>
+
+    <div>
+
+        AI Powered Financial Fraud Detection Platform
+
+    </div>
+
+</footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="/static/js/dashboard.js"></script>
+
+
+{% endblock %}
+

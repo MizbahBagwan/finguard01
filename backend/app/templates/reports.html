@@ -1,0 +1,1308 @@
+{% extends "base.html" %}
+
+{% block title %}Reports & Analytics | FinGuard AI{% endblock %}
+
+{% block page_title %}
+Reports & Analytics
+{% endblock %}
+
+{% block page_subtitle %}
+Financial intelligence, fraud analytics and AI-powered security reports
+{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet"
+      href="{{ url_for('static', path='css/reports.css') }}">
+{% endblock %}
+
+{% block content %}
+
+<div class="reports-page">
+<!-- FinGuard AI Global Theme -->
+<link
+    rel="stylesheet"
+    href="{{ url_for('static', path='css/theme.css') }}"
+>
+    <!-- =====================================================
+         TOP INTRO
+    ====================================================== -->
+
+    <section class="reports-intro">
+
+        <div class="intro-content">
+
+            <div class="intro-label">
+                <span class="intro-dot"></span>
+                FINANCIAL INTELLIGENCE CENTER
+            </div>
+
+            <h1>
+                Reports &
+                <span>Analytics</span>
+            </h1>
+
+            <p>
+                Transform your transaction data into actionable
+                financial intelligence with AI-powered fraud
+                detection and risk analytics.
+            </p>
+
+            <div class="intro-meta">
+
+                <div>
+                    <i class="fa-solid fa-shield-halved"></i>
+                    AI Protected
+                </div>
+
+                <div>
+                    <i class="fa-solid fa-chart-line"></i>
+                    Real-Time Analytics
+                </div>
+
+                <div>
+                    <i class="fa-solid fa-lock"></i>
+                    Secure Data
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="intro-actions">
+
+            <button
+                class="report-action secondary"
+                onclick="window.location.reload()">
+
+                <i class="fa-solid fa-rotate"></i>
+
+                Refresh
+
+            </button>
+
+            <button
+                class="report-action primary"
+                onclick="generateReport()">
+
+                <i class="fa-solid fa-wand-magic-sparkles"></i>
+
+                Generate Report
+
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         SECURITY STATUS
+    ====================================================== -->
+
+    <section class="security-banner">
+
+        <div class="security-banner-icon">
+
+            <i class="fa-solid fa-shield-halved"></i>
+
+        </div>
+
+        <div class="security-banner-content">
+
+            <span>
+                FINGUARD AI SECURITY ENGINE
+            </span>
+
+            <strong>
+                Financial monitoring is active
+            </strong>
+
+            <p>
+                AI continuously analyzes transaction activity,
+                fraud patterns and financial risk.
+            </p>
+
+        </div>
+
+        <div class="security-live">
+
+            <span></span>
+
+            SYSTEM ACTIVE
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         KPI STATISTICS
+    ====================================================== -->
+
+    <section class="reports-kpi-grid">
+
+
+        <!-- TRANSACTIONS -->
+
+        <div class="kpi-card">
+
+            <div class="kpi-top">
+
+                <div class="kpi-icon blue">
+
+                    <i class="fa-solid fa-arrow-right-arrow-left"></i>
+
+                </div>
+
+                <span class="kpi-label">
+                    TOTAL TRANSACTIONS
+                </span>
+
+            </div>
+
+            <h2>
+                {{ total_transactions | default(0) }}
+            </h2>
+
+            <div class="kpi-footer">
+
+                <span class="kpi-positive">
+                    <i class="fa-solid fa-chart-line"></i>
+                    Overall activity
+                </span>
+
+                <i class="fa-solid fa-arrow-up-right"></i>
+
+            </div>
+
+        </div>
+
+
+        <!-- FRAUD -->
+
+        <div class="kpi-card danger-card">
+
+            <div class="kpi-top">
+
+                <div class="kpi-icon red">
+
+                    <i class="fa-solid fa-triangle-exclamation"></i>
+
+                </div>
+
+                <span class="kpi-label">
+                    FRAUD DETECTED
+                </span>
+
+            </div>
+
+            <h2>
+                {{ fraud_detected | default(0) }}
+            </h2>
+
+            <div class="kpi-footer">
+
+                <span class="kpi-danger">
+                    <i class="fa-solid fa-shield-virus"></i>
+                    Threat detection
+                </span>
+
+                <i class="fa-solid fa-arrow-up-right"></i>
+
+            </div>
+
+        </div>
+
+
+        <!-- HIGH RISK -->
+
+        <div class="kpi-card warning-card">
+
+            <div class="kpi-top">
+
+                <div class="kpi-icon orange">
+
+                    <i class="fa-solid fa-bolt"></i>
+
+                </div>
+
+                <span class="kpi-label">
+                    HIGH RISK
+                </span>
+
+            </div>
+
+            <h2>
+                {{ high_risk | default(0) }}
+            </h2>
+
+            <div class="kpi-footer">
+
+                <span class="kpi-warning">
+                    <i class="fa-solid fa-circle-exclamation"></i>
+                    Requires attention
+                </span>
+
+                <i class="fa-solid fa-arrow-up-right"></i>
+
+            </div>
+
+        </div>
+
+
+        <!-- ACCURACY -->
+
+        <div class="kpi-card success-card">
+
+            <div class="kpi-top">
+
+                <div class="kpi-icon green">
+
+                    <i class="fa-solid fa-bullseye"></i>
+
+                </div>
+
+                <span class="kpi-label">
+                    DETECTION ACCURACY
+                </span>
+
+            </div>
+
+            <h2 id="detectionAccuracy">
+                Loading...
+            </h2>
+
+            <div class="kpi-footer">
+
+                <span class="kpi-success">
+                    <i class="fa-solid fa-circle-check"></i>
+                    AI model performance
+                </span>
+
+                <i class="fa-solid fa-arrow-up-right"></i>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         MAIN CONTENT GRID
+    ====================================================== -->
+
+    <section class="reports-main-grid">
+
+
+        <!-- =================================================
+             GENERATE REPORT
+        ================================================== -->
+
+        <div class="modern-card generate-report-card">
+
+            <div class="modern-card-header">
+
+                <div>
+
+                    <span class="card-eyebrow">
+                        REPORT CENTER
+                    </span>
+
+                    <h2>
+                        Generate Financial Report
+                    </h2>
+
+                    <p>
+                        Configure your report and generate
+                        detailed financial intelligence.
+                    </p>
+
+                </div>
+
+                <div class="header-icon">
+
+                    <i class="fa-solid fa-file-circle-plus"></i>
+
+                </div>
+
+            </div>
+
+
+            <div class="report-form">
+
+
+                <!-- REPORT TYPE -->
+
+                <div class="form-field">
+
+                    <label>
+                        <i class="fa-solid fa-file-lines"></i>
+                        Report Type
+                    </label>
+
+                    <div class="modern-input">
+
+                        <i class="fa-solid fa-chart-column"></i>
+
+                        <select id="reportType">
+
+                            <option value="comprehensive">
+                                Comprehensive Report
+                            </option>
+
+                            <option value="fraud">
+                                Fraud Detection Report
+                            </option>
+
+                            <option value="transactions">
+                                Transaction Report
+                            </option>
+
+                            <option value="risk">
+                                Risk Analysis Report
+                            </option>
+
+                        </select>
+
+                        <i class="fa-solid fa-chevron-down"></i>
+
+                    </div>
+
+                </div>
+
+
+                <!-- DATE -->
+
+                <div class="date-grid">
+
+                    <div class="form-field">
+
+                        <label>
+                            <i class="fa-regular fa-calendar"></i>
+                            Start Date
+                        </label>
+
+                        <div class="modern-input">
+
+                            <i class="fa-solid fa-calendar-days"></i>
+
+                            <input
+                                type="date"
+                                id="startDate">
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="form-field">
+
+                        <label>
+                            <i class="fa-regular fa-calendar"></i>
+                            End Date
+                        </label>
+
+                        <div class="modern-input">
+
+                            <i class="fa-solid fa-calendar-days"></i>
+
+                            <input
+                                type="date"
+                                id="endDate">
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- OPTIONS -->
+
+                <div class="report-options">
+
+                    <label class="option-card">
+
+                        <input
+                            type="checkbox"
+                            id="includeAI"
+                            checked>
+
+                        <span class="custom-check">
+                            <i class="fa-solid fa-check"></i>
+                        </span>
+
+                        <span class="option-icon blue">
+                            <i class="fa-solid fa-brain"></i>
+                        </span>
+
+                        <span class="option-content">
+
+                            <strong>
+                                AI Insights
+                            </strong>
+
+                            <small>
+                                Include AI fraud analysis
+                                and recommendations.
+                            </small>
+
+                        </span>
+
+                    </label>
+
+
+                    <label class="option-card">
+
+                        <input
+                            type="checkbox"
+                            id="includeCharts"
+                            checked>
+
+                        <span class="custom-check">
+                            <i class="fa-solid fa-check"></i>
+                        </span>
+
+                        <span class="option-icon purple">
+                            <i class="fa-solid fa-chart-pie"></i>
+                        </span>
+
+                        <span class="option-content">
+
+                            <strong>
+                                Analytics
+                            </strong>
+
+                            <small>
+                                Include charts and
+                                risk distribution.
+                            </small>
+
+                        </span>
+
+                    </label>
+
+                </div>
+
+
+                <button
+                    class="generate-report-button"
+                    onclick="generateReport()">
+
+                    <span>
+
+                        <i class="fa-solid fa-wand-magic-sparkles"></i>
+
+                        Generate Report
+
+                    </span>
+
+                    <i class="fa-solid fa-arrow-right"></i>
+
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- =================================================
+             RISK ANALYTICS
+        ================================================== -->
+
+        <div class="modern-card risk-analytics-card">
+
+            <div class="modern-card-header">
+
+                <div>
+
+                    <span class="card-eyebrow">
+                        RISK INTELLIGENCE
+                    </span>
+
+                    <h2>
+                        Transaction Risk
+                    </h2>
+
+                    <p>
+                        Current financial risk distribution
+                    </p>
+
+                </div>
+
+                <div class="header-icon">
+
+                    <i class="fa-solid fa-chart-pie"></i>
+
+                </div>
+
+            </div>
+
+
+            <div class="risk-content">
+
+
+                <div class="risk-meter">
+
+                    <div class="risk-meter-inner">
+
+                        <strong id="riskPercentage">
+                            {{ average_risk | default(0) }}%
+                        </strong>
+
+                        <span>
+                            Average Risk
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="risk-breakdown">
+
+
+                    <div class="risk-row">
+
+                        <div>
+
+                            <span class="risk-color safe"></span>
+
+                            <span>
+                                Safe
+                            </span>
+
+                        </div>
+
+                        <strong id="safeCount">
+                            {{ safe_transactions | default(0) }}
+                        </strong>
+
+                    </div>
+
+
+                    <div class="risk-row">
+
+                        <div>
+
+                            <span class="risk-color medium"></span>
+
+                            <span>
+                                Medium
+                            </span>
+
+                        </div>
+
+                        <strong id="mediumCount">
+                            {{ medium_risk | default(0) }}
+                        </strong>
+
+                    </div>
+
+
+                    <div class="risk-row">
+
+                        <div>
+
+                            <span class="risk-color high"></span>
+
+                            <span>
+                                High
+                            </span>
+
+                        </div>
+
+                        <strong id="highCount">
+                            {{ high_risk | default(0) }}
+                        </strong>
+
+                    </div>
+
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- =================================================
+             AI INTELLIGENCE
+        ================================================== -->
+
+        <div class="modern-card ai-intelligence-card">
+
+            <div class="modern-card-header">
+
+                <div>
+
+                    <span class="card-eyebrow">
+                        ARTIFICIAL INTELLIGENCE
+                    </span>
+
+                    <h2>
+                        AI Security Intelligence
+                    </h2>
+
+                    <p>
+                        Intelligent protection across your
+                        financial ecosystem.
+                    </p>
+
+                </div>
+
+                <div class="ai-active">
+
+                    <span></span>
+
+                    AI ACTIVE
+
+                </div>
+
+            </div>
+
+
+            <div class="ai-feature-grid">
+
+
+                <div class="ai-feature">
+
+                    <div class="ai-feature-icon blue">
+                        <i class="fa-solid fa-brain"></i>
+                    </div>
+
+                    <div>
+
+                        <strong>
+                            Intelligent Detection
+                        </strong>
+
+                        <p>
+                            AI analyzes transaction
+                            behavior and patterns.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="ai-feature">
+
+                    <div class="ai-feature-icon red">
+                        <i class="fa-solid fa-shield-virus"></i>
+                    </div>
+
+                    <div>
+
+                        <strong>
+                            Fraud Prevention
+                        </strong>
+
+                        <p>
+                            Suspicious activity is
+                            identified automatically.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="ai-feature">
+
+                    <div class="ai-feature-icon orange">
+                        <i class="fa-solid fa-magnifying-glass-chart"></i>
+                    </div>
+
+                    <div>
+
+                        <strong>
+                            Risk Intelligence
+                        </strong>
+
+                        <p>
+                            Transaction behavior is
+                            continuously evaluated.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="ai-feature">
+
+                    <div class="ai-feature-icon green">
+                        <i class="fa-solid fa-lock"></i>
+                    </div>
+
+                    <div>
+
+                        <strong>
+                            Financial Protection
+                        </strong>
+
+                        <p>
+                            Continuous monitoring protects
+                            your financial ecosystem.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         REPORT HISTORY
+    ====================================================== -->
+
+    <section class="modern-card report-history-card">
+
+        <div class="modern-card-header">
+
+            <div>
+
+                <span class="card-eyebrow">
+                    REPORT HISTORY
+                </span>
+
+                <h2>
+                    Recent Reports
+                </h2>
+
+                <p>
+                    Previously generated financial reports
+                </p>
+
+            </div>
+
+            <button
+                class="view-all-button"
+                onclick="viewAllReports()">
+
+                View All
+
+                <i class="fa-solid fa-arrow-right"></i>
+
+            </button>
+
+        </div>
+
+
+        <div class="reports-table-container">
+
+            <table class="modern-reports-table">
+
+                <thead>
+
+                    <tr>
+
+                        <th>
+                            REPORT
+                        </th>
+
+                        <th>
+                            TYPE
+                        </th>
+
+                        <th>
+                            GENERATED
+                        </th>
+
+                        <th>
+                            STATUS
+                        </th>
+
+                        <th>
+                            ACTION
+                        </th>
+
+                    </tr>
+
+                </thead>
+
+
+                <tbody>
+
+                {% if reports %}
+
+                    {% for report in reports %}
+
+                    <tr>
+
+                        <td>
+
+                            <div class="report-name">
+
+                                <div class="report-file-icon">
+
+                                    <i class="fa-solid fa-file-pdf"></i>
+
+                                </div>
+
+                                <div>
+
+                                    <strong>
+                                        {{ report.name | default('Financial Report') }}
+                                    </strong>
+
+                                    <small>
+                                        {{ report.id | default('Report') }}
+                                    </small>
+
+                                </div>
+
+                            </div>
+
+                        </td>
+
+
+                        <td>
+
+                            <span class="type-text">
+                                {{ report.type | default('Comprehensive') }}
+                            </span>
+
+                        </td>
+
+
+                        <td>
+
+                            <span class="date-text">
+                                {{ report.created_at | default('Recently') }}
+                            </span>
+
+                        </td>
+
+
+                        <td>
+
+                            <span class="completed-status">
+
+                                <span></span>
+
+                                {{ report.status | default('Completed') }}
+
+                            </span>
+
+                        </td>
+
+
+                        <td>
+
+                            <div class="report-actions">
+
+                                <button
+                                    onclick="viewReport('{{ report.id }}')"
+                                    title="View">
+
+                                    <i class="fa-solid fa-eye"></i>
+
+                                </button>
+
+                                <button
+                                    onclick="downloadReport('{{ report.id }}')"
+                                    title="Download">
+
+                                    <i class="fa-solid fa-download"></i>
+
+                                </button>
+
+                                <button
+                                    class="delete-action"
+                                    data-report-id="{{ report.id }}"
+                                    title="Delete">
+
+                                    <i class="fa-solid fa-trash"></i>
+
+                                </button>
+
+                            </div>
+
+                        </td>
+
+                    </tr>
+
+                    {% endfor %}
+
+                {% else %}
+
+                    <tr>
+
+                        <td colspan="5">
+
+                            <div class="reports-empty">
+
+                                <div class="empty-report-icon">
+
+                                    <i class="fa-solid fa-file-circle-xmark"></i>
+
+                                </div>
+
+                                <h3>
+                                    No Reports Available
+                                </h3>
+
+                                <p>
+                                    Generate your first financial
+                                    security report to see it here.
+                                </p>
+
+                                <button
+                                    onclick="generateReport()">
+
+                                    <i class="fa-solid fa-plus"></i>
+
+                                    Generate First Report
+
+                                </button>
+
+                            </div>
+
+                        </td>
+
+                    </tr>
+
+                {% endif %}
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         BOTTOM SECURITY PANEL
+    ====================================================== -->
+
+    <section class="reports-bottom-security">
+
+        <div class="bottom-security-icon">
+
+            <i class="fa-solid fa-shield-halved"></i>
+
+        </div>
+
+        <div>
+
+            <span>
+                FINGUARD AI SECURITY
+            </span>
+
+            <strong>
+                Your financial intelligence is protected
+            </strong>
+
+            <p>
+                AI-powered monitoring continuously analyzes
+                transaction activity and detects potential
+                financial threats.
+            </p>
+
+        </div>
+
+        <div class="bottom-security-status">
+
+            <span></span>
+
+            SYSTEM SECURE
+
+        </div>
+
+    </section>
+
+</div>
+
+
+<!-- =====================================================
+     JAVASCRIPT
+====================================================== -->
+
+<script>
+
+document.addEventListener("DOMContentLoaded", function () {
+
+    const today = new Date();
+
+    const endDate =
+        document.getElementById("endDate");
+
+    const startDate =
+        document.getElementById("startDate");
+
+    if (endDate) {
+
+        endDate.value =
+            today.toISOString().split("T")[0];
+
+    }
+
+    if (startDate) {
+
+        const previousDate =
+            new Date(today);
+
+        previousDate.setDate(
+            previousDate.getDate() - 30
+        );
+
+        startDate.value =
+            previousDate.toISOString().split("T")[0];
+
+    }
+
+});
+
+
+function scrollToReports() {
+
+    const section =
+        document.querySelector(".report-history-card");
+
+    if (section) {
+
+        section.scrollIntoView({
+            behavior: "smooth"
+        });
+
+    }
+
+}
+
+
+async function generateReport() {
+
+    const button =
+        document.querySelector(".generate-report-button");
+
+    if (!button) return;
+
+    const originalHTML =
+        button.innerHTML;
+
+    button.disabled = true;
+
+    button.innerHTML = `
+        <span>
+            <i class="fa-solid fa-spinner fa-spin"></i>
+            Generating Report...
+        </span>
+    `;
+
+    try {
+
+        const reportType =
+            document.getElementById("reportType")?.value
+            || "comprehensive";
+
+        const startDate =
+            document.getElementById("startDate")?.value
+            || "";
+
+        const endDate =
+            document.getElementById("endDate")?.value
+            || "";
+
+        const includeAI =
+            document.getElementById("includeAI")?.checked
+            ?? true;
+
+        const includeCharts =
+            document.getElementById("includeCharts")?.checked
+            ?? true;
+
+
+        const response =
+            await fetch("/api/reports/generate", {
+
+                method: "POST",
+
+                headers: {
+                    "Content-Type":
+                        "application/json"
+                },
+
+                body: JSON.stringify({
+
+                    report_type: reportType,
+
+                    start_date: startDate,
+
+                    end_date: endDate,
+
+                    include_ai: includeAI,
+
+                    include_charts: includeCharts
+
+                })
+
+            });
+
+
+        if (!response.ok) {
+
+            throw new Error(
+                "Report generation failed"
+            );
+
+        }
+
+
+        const data =
+            await response.json();
+
+
+        if (data.download_url) {
+
+            window.open(
+                data.download_url,
+                "_blank"
+            );
+
+        } else {
+
+            showReportMessage(
+                "Report generated successfully!",
+                "success"
+            );
+
+            setTimeout(() => {
+
+                window.location.reload();
+
+            }, 1000);
+
+        }
+
+    }
+
+    catch (error) {
+
+        console.error(
+            "Report Error:",
+            error
+        );
+
+        showReportMessage(
+            "Unable to generate report. Please try again.",
+            "error"
+        );
+
+    }
+
+    finally {
+
+        button.disabled = false;
+
+        button.innerHTML =
+            originalHTML;
+
+    }
+
+}
+
+
+function viewReport(id) {
+
+    if (!id) return;
+
+    window.location.href =
+        `/reports/${id}`;
+
+}
+
+
+function downloadReport(id) {
+
+    if (!id) return;
+
+    window.open(
+        `/reports/${id}/download`,
+        "_blank"
+    );
+
+}
+
+
+function viewAllReports() {
+
+    window.location.href =
+        "/reports";
+
+}
+
+
+function showReportMessage(message, type) {
+
+    const existing =
+        document.querySelector(".report-toast");
+
+    if (existing) {
+        existing.remove();
+    }
+
+
+    const toast =
+        document.createElement("div");
+
+    toast.className =
+        `report-toast ${type}`;
+
+
+    toast.innerHTML = `
+
+        <i class="fa-solid ${
+            type === "success"
+            ? "fa-circle-check"
+            : "fa-circle-exclamation"
+        }"></i>
+
+        <span>
+            ${message}
+        </span>
+
+    `;
+
+
+    document.body.appendChild(toast);
+
+
+    setTimeout(() => {
+
+        toast.classList.add("show");
+
+    }, 50);
+
+
+    setTimeout(() => {
+
+        toast.classList.remove("show");
+
+        setTimeout(() => {
+
+            toast.remove();
+
+        }, 300);
+
+    }, 3500);
+
+}
+
+</script>
+
+
+<script src="{{ url_for('static', path='js/reports.js') }}"></script>
+
+{% endblock %}

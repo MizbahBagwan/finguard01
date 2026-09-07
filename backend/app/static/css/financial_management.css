@@ -1,0 +1,2214 @@
+/* =========================================================
+   FINGUARD AI — FINANCIAL MANAGEMENT
+   CLEAN WHITE + NAVY BLUE UI
+   ========================================================= */
+
+:root {
+    --navy: #0b1f3a;
+    --navy-dark: #07172d;
+    --navy-soft: #173a66;
+
+    --white: #ffffff;
+    --page-bg: #f7f9fc;
+    --soft-bg: #f1f4f8;
+
+    --text: #172033;
+    --muted: #667085;
+    --light-text: #98a2b3;
+
+    --border: #e4e7ec;
+    --border-dark: #d0d5dd;
+
+    --green: #16a34a;
+    --red: #dc2626;
+
+    --shadow: 0 4px 18px rgba(11, 31, 58, 0.06);
+    --shadow-hover: 0 10px 28px rgba(11, 31, 58, 0.09);
+
+    --radius: 14px;
+    --transition: 0.2s ease;
+}
+
+
+/* =========================================================
+   PAGE
+   ========================================================= */
+
+.fg-fin-page {
+    width: 100%;
+    min-height: 100vh;
+    box-sizing: border-box;
+
+    padding: 28px;
+
+    background: var(--page-bg);
+    color: var(--text);
+}
+
+
+/* =========================================================
+   HERO
+   WHITE HERO
+   ========================================================= */
+
+.fg-fin-hero {
+    position: relative;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 30px;
+
+    padding: 28px 30px;
+    margin-bottom: 28px;
+
+    background: var(--white);
+    color: var(--text);
+
+    border: 1px solid var(--border);
+    border-radius: 18px;
+
+    box-shadow: var(--shadow);
+
+    overflow: hidden;
+}
+
+/* Small navy accent */
+
+.fg-fin-hero::after {
+    content: "";
+
+    position: absolute;
+
+    width: 130px;
+    height: 130px;
+
+    right: -45px;
+    top: -45px;
+
+    border-radius: 50%;
+
+    background: var(--navy);
+
+    opacity: 0.06;
+}
+
+.fg-fin-hero-main {
+    position: relative;
+    z-index: 2;
+
+    display: flex;
+    align-items: center;
+
+    gap: 18px;
+
+    min-width: 0;
+}
+
+.fg-fin-hero-icon {
+    flex: 0 0 auto;
+
+    width: 58px;
+    height: 58px;
+
+    display: grid;
+    place-items: center;
+
+    border-radius: 14px;
+
+    background: var(--navy);
+    color: var(--white);
+
+    font-size: 23px;
+}
+
+.fg-fin-eyebrow {
+    display: block;
+
+    color: var(--navy);
+
+    font-size: 10px;
+    font-weight: 800;
+
+    letter-spacing: 1.6px;
+}
+
+.fg-fin-hero h1 {
+    margin: 6px 0;
+
+    color: var(--text);
+
+    font-size: 32px;
+    line-height: 1.15;
+    font-weight: 800;
+}
+
+.fg-fin-hero p {
+    max-width: 700px;
+
+    margin: 0 0 13px;
+
+    color: var(--muted);
+
+    font-size: 12px;
+    line-height: 1.6;
+}
+
+.fg-fin-status-row {
+    display: flex;
+    align-items: center;
+
+    flex-wrap: wrap;
+
+    gap: 11px;
+}
+
+.fg-fin-status {
+    color: var(--muted);
+
+    font-size: 10px;
+    font-weight: 700;
+}
+
+.fg-fin-status-dot {
+    width: 7px;
+    height: 7px;
+
+    display: inline-block;
+
+    margin-right: 5px;
+
+    border-radius: 50%;
+
+    background: var(--green);
+}
+
+.fg-fin-status-divider {
+    width: 1px;
+    height: 15px;
+
+    background: var(--border-dark);
+}
+
+
+/* =========================================================
+   FINANCIAL IQ
+   NAVY ACCENT ONLY
+   ========================================================= */
+
+.fg-fin-iq {
+    position: relative;
+    z-index: 2;
+
+    display: flex;
+    align-items: center;
+
+    gap: 10px;
+
+    padding: 10px 14px;
+
+    background: var(--navy);
+
+    border-radius: 11px;
+
+    color: var(--white);
+}
+
+.fg-fin-iq-icon {
+    width: 38px;
+    height: 38px;
+
+    display: grid;
+    place-items: center;
+
+    border-radius: 9px;
+
+    background: rgba(255,255,255,0.12);
+
+    color: var(--white);
+}
+
+.fg-fin-iq span {
+    display: block;
+
+    color: #cbd5e1;
+
+    font-size: 8px;
+    font-weight: 700;
+
+    letter-spacing: 1px;
+}
+
+.fg-fin-iq strong {
+    display: block;
+
+    margin-top: 2px;
+
+    color: var(--white);
+
+    font-size: 14px;
+}
+
+
+/* =========================================================
+   SECTION HEADER
+   ========================================================= */
+
+.fg-fin-section-head {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+
+    gap: 20px;
+
+    margin-bottom: 17px;
+}
+
+.fg-fin-section-label {
+    color: var(--navy);
+
+    font-size: 9px;
+    font-weight: 800;
+
+    letter-spacing: 1.5px;
+}
+
+.fg-fin-section-head h2 {
+    margin: 5px 0 4px;
+
+    color: var(--text);
+
+    font-size: 21px;
+    font-weight: 800;
+}
+
+.fg-fin-section-head p {
+    margin: 0;
+
+    color: var(--muted);
+
+    font-size: 11px;
+}
+
+
+/* =========================================================
+   BUTTONS
+   ========================================================= */
+
+.fg-fin-actions {
+    display: flex;
+    gap: 9px;
+}
+
+.fg-fin-btn,
+.fg-fin-small-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 7px;
+
+    padding: 10px 15px;
+
+    border-radius: 9px;
+
+    font-family: inherit;
+    font-size: 11px;
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition: var(--transition);
+}
+
+.fg-fin-btn:hover,
+.fg-fin-small-btn:hover {
+    transform: translateY(-1px);
+}
+
+
+/* White button */
+
+.fg-fin-btn-light,
+.fg-fin-small-btn {
+    background: var(--white);
+
+    color: var(--navy);
+
+    border: 1px solid var(--border);
+
+    box-shadow: none;
+}
+
+.fg-fin-btn-light:hover,
+.fg-fin-small-btn:hover {
+    background: var(--soft-bg);
+
+    border-color: var(--border-dark);
+}
+
+
+/* Navy only for primary action */
+
+.fg-fin-btn-primary {
+    background: var(--navy);
+
+    color: var(--white);
+
+    border: 1px solid var(--navy);
+}
+
+.fg-fin-btn-primary:hover {
+    background: var(--navy-dark);
+}
+
+
+/* =========================================================
+   METRICS
+   ========================================================= */
+
+.fg-fin-metrics {
+    display: grid;
+
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+
+    gap: 15px;
+
+    margin-bottom: 22px;
+}
+
+.fg-fin-metric {
+    background: var(--white);
+
+    border: 1px solid var(--border);
+
+    border-radius: var(--radius);
+
+    box-shadow: var(--shadow);
+
+    padding: 19px;
+
+    transition: var(--transition);
+}
+
+.fg-fin-metric:hover {
+    transform: translateY(-2px);
+
+    box-shadow: var(--shadow-hover);
+}
+
+.fg-fin-metric-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.fg-fin-metric-icon {
+    width: 40px;
+    height: 40px;
+
+    display: grid;
+    place-items: center;
+
+    border-radius: 10px;
+
+    background: var(--soft-bg);
+
+    color: var(--navy);
+
+    font-size: 15px;
+}
+
+.fg-fin-metric-tag {
+    color: var(--light-text);
+
+    font-size: 9px;
+    font-weight: 800;
+
+    letter-spacing: 1px;
+}
+
+.fg-fin-metric-body {
+    margin: 18px 0;
+}
+
+.fg-fin-metric-body span {
+    color: var(--muted);
+
+    font-size: 11px;
+}
+
+.fg-fin-metric-body strong {
+    display: block;
+
+    margin-top: 5px;
+
+    color: var(--text);
+
+    font-size: 24px;
+    font-weight: 800;
+}
+
+.fg-fin-metric-footer {
+    padding-top: 11px;
+
+    border-top: 1px solid var(--border);
+
+    color: var(--light-text);
+
+    font-size: 9px;
+}
+
+.fg-fin-metric-footer i {
+    color: var(--navy);
+
+    margin-right: 4px;
+}
+
+
+/* =========================================================
+   MAIN CARDS
+   ========================================================= */
+
+.fg-fin-main-grid {
+    display: grid;
+
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+
+    gap: 18px;
+
+    margin-bottom: 22px;
+}
+
+.fg-fin-card {
+    min-width: 0;
+
+    padding: 21px;
+
+    background: var(--white);
+
+    color: var(--text);
+
+    border: 1px solid var(--border);
+
+    border-radius: var(--radius);
+
+    box-shadow: var(--shadow);
+}
+
+.fg-fin-card-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+
+    gap: 15px;
+
+    margin-bottom: 19px;
+}
+
+.fg-fin-card-title {
+    display: flex;
+    align-items: center;
+
+    gap: 11px;
+
+    min-width: 0;
+}
+
+.fg-fin-card-icon {
+    flex: 0 0 auto;
+
+    width: 40px;
+    height: 40px;
+
+    display: grid;
+    place-items: center;
+
+    border-radius: 10px;
+
+    background: var(--soft-bg);
+
+    color: var(--navy);
+
+    font-size: 15px;
+}
+
+.fg-fin-card-title span {
+    color: var(--navy);
+
+    font-size: 8px;
+    font-weight: 800;
+
+    letter-spacing: 1.2px;
+}
+
+.fg-fin-card h3 {
+    margin: 4px 0;
+
+    color: var(--text);
+
+    font-size: 15px;
+    font-weight: 800;
+}
+
+.fg-fin-card p {
+    margin: 0;
+
+    color: var(--muted);
+
+    font-size: 10px;
+}
+
+.fg-fin-card-badge {
+    padding: 6px 9px;
+
+    border-radius: 7px;
+
+    background: var(--soft-bg);
+
+    color: var(--navy);
+
+    font-size: 8px;
+    font-weight: 800;
+}
+
+
+/* =========================================================
+   LOADING / EMPTY
+   ========================================================= */
+
+.fg-fin-loading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 7px;
+
+    min-height: 70px;
+
+    color: var(--muted);
+
+    font-size: 11px;
+}
+
+.fg-fin-loading i {
+    color: var(--navy);
+}
+
+.fg-fin-empty {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    min-height: 70px;
+
+    color: var(--muted);
+
+    font-size: 11px;
+}
+
+
+/* =========================================================
+   CATEGORY
+   ========================================================= */
+
+#categoryList {
+    display: grid;
+    gap: 8px;
+}
+
+.category-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 12px;
+
+    padding: 10px 11px;
+
+    background: #fafbfc;
+
+    border: 1px solid #edf0f3;
+
+    border-radius: 9px;
+}
+
+.category-left {
+    display: flex;
+    align-items: center;
+
+    gap: 10px;
+
+    min-width: 0;
+}
+
+.category-icon {
+    flex: 0 0 auto;
+
+    width: 35px;
+    height: 35px;
+
+    display: grid;
+    place-items: center;
+
+    border-radius: 9px;
+
+    background: var(--navy);
+
+    color: var(--white);
+
+    font-size: 13px;
+}
+
+.category-info strong {
+    display: block;
+
+    color: var(--text);
+
+    font-size: 11px;
+}
+
+.category-info span {
+    display: block;
+
+    margin-top: 2px;
+
+    color: var(--muted);
+
+    font-size: 9px;
+}
+
+.category-amount {
+    color: var(--text);
+
+    font-size: 11px;
+    font-weight: 800;
+}
+
+
+/* =========================================================
+   HEALTH
+   ========================================================= */
+
+.fg-fin-health-score {
+    display: flex;
+    align-items: center;
+
+    gap: 22px;
+
+    margin-bottom: 20px;
+}
+
+.fg-fin-health-circle {
+    width: 135px;
+    height: 135px;
+
+    display: grid;
+    place-items: center;
+
+    flex: 0 0 auto;
+
+    border-radius: 50%;
+
+    background:
+        conic-gradient(
+            var(--navy) var(--health-progress, 0deg),
+            #e9edf2 0
+        );
+}
+
+.fg-fin-health-circle-inner {
+    width: 106px;
+    height: 106px;
+
+    display: grid;
+    place-items: center;
+    align-content: center;
+
+    border-radius: 50%;
+
+    background: var(--white);
+}
+
+.fg-fin-health-circle-inner strong {
+    color: var(--text);
+
+    font-size: 26px;
+    font-weight: 800;
+}
+
+.fg-fin-health-circle-inner span {
+    margin-top: 4px;
+
+    color: var(--muted);
+
+    font-size: 9px;
+}
+
+.fg-fin-health-status > span {
+    color: var(--navy);
+
+    font-size: 8px;
+    font-weight: 800;
+
+    letter-spacing: 1px;
+}
+
+.fg-fin-health-status h4 {
+    margin: 6px 0;
+
+    color: var(--text);
+
+    font-size: 18px;
+    font-weight: 800;
+}
+
+.fg-fin-health-status p {
+    color: var(--muted);
+
+    font-size: 10px;
+
+    line-height: 1.5;
+}
+
+.fg-fin-health-stats {
+    display: grid;
+
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+
+    gap: 8px;
+}
+
+.fg-fin-health-stat {
+    padding: 11px;
+
+    background: #fafbfc;
+
+    border: 1px solid #edf0f3;
+
+    border-radius: 9px;
+}
+
+.fg-fin-health-stat span {
+    color: var(--muted);
+
+    font-size: 9px;
+}
+
+.fg-fin-health-stat strong {
+    display: block;
+
+    margin-top: 4px;
+
+    color: var(--text);
+
+    font-size: 12px;
+}
+
+
+/* =========================================================
+   TRANSACTIONS
+   ========================================================= */
+
+.fg-fin-transactions {
+    margin-bottom: 22px;
+}
+
+#recentTransactionsList {
+    display: grid;
+}
+
+.transaction-item {
+    display: flex;
+    align-items: center;
+
+    gap: 12px;
+
+    padding: 13px 0;
+
+    border-bottom: 1px solid var(--border);
+}
+
+.transaction-item:last-child {
+    border-bottom: 0;
+}
+
+.transaction-icon {
+    flex: 0 0 auto;
+
+    width: 39px;
+    height: 39px;
+
+    display: grid;
+    place-items: center;
+
+    border-radius: 9px;
+
+    background: var(--soft-bg);
+
+    color: var(--navy);
+
+    font-size: 13px;
+}
+
+.transaction-main {
+    flex: 1;
+
+    min-width: 0;
+}
+
+.transaction-main p {
+    margin: 0;
+}
+
+.transaction-category {
+    color: var(--text) !important;
+
+    font-size: 11px;
+    font-weight: 700;
+}
+
+.transaction-description {
+    margin-top: 3px !important;
+
+    color: var(--muted) !important;
+
+    font-size: 9px;
+}
+
+.transaction-meta {
+    text-align: right;
+}
+
+.transaction-meta p {
+    margin: 2px 0;
+
+    color: var(--light-text);
+
+    font-size: 8px;
+}
+
+.transaction-amount {
+    min-width: 85px;
+
+    text-align: right;
+
+    font-size: 11px;
+    font-weight: 800;
+}
+
+.transaction-amount.income {
+    color: var(--green);
+}
+
+.transaction-amount.expense {
+    color: var(--red);
+}
+
+
+/* =========================================================
+   SECURITY
+   WHITE CARD
+   NAVY ACCENT ICON
+   ========================================================= */
+
+.fg-fin-security {
+    display: flex;
+    align-items: center;
+
+    gap: 14px;
+
+    padding: 18px 20px;
+
+    background: var(--white);
+
+    color: var(--text);
+
+    border: 1px solid var(--border);
+
+    border-radius: var(--radius);
+
+    box-shadow: var(--shadow);
+}
+
+.fg-fin-security-icon {
+    flex: 0 0 auto;
+
+    width: 44px;
+    height: 44px;
+
+    display: grid;
+    place-items: center;
+
+    border-radius: 10px;
+
+    background: var(--navy);
+
+    color: var(--white);
+}
+
+.fg-fin-security > div:nth-child(2) {
+    min-width: 0;
+}
+
+.fg-fin-security > div:nth-child(2) > span {
+    color: var(--navy);
+
+    font-size: 8px;
+    font-weight: 800;
+
+    letter-spacing: 1px;
+}
+
+.fg-fin-security h3 {
+    margin: 4px 0;
+
+    color: var(--text);
+
+    font-size: 14px;
+}
+
+.fg-fin-security p {
+    margin: 0;
+
+    color: var(--muted);
+
+    font-size: 9px;
+}
+
+.fg-fin-secure-badge {
+    margin-left: auto;
+
+    padding: 7px 10px;
+
+    border-radius: 7px;
+
+    background: #ecfdf3;
+
+    color: var(--green);
+
+    font-size: 8px;
+    font-weight: 800;
+
+    white-space: nowrap;
+}
+
+
+/* =========================================================
+   MODAL
+   ========================================================= */
+
+.financial-modal {
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 99999;
+
+    display: none;
+
+    padding: 20px;
+
+    overflow-y: auto;
+}
+
+.financial-modal.show {
+    display: block !important;
+}
+
+.financial-modal-overlay {
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 1;
+
+    background: rgba(7, 23, 45, 0.55);
+
+    backdrop-filter: blur(2px);
+}
+
+.financial-modal-content {
+    position: relative;
+
+    z-index: 2;
+
+    width: min(700px, 100%);
+
+    max-height: calc(100vh - 40px);
+
+    overflow-y: auto;
+
+    margin: 20px auto;
+
+    padding: 24px;
+
+    background: var(--white);
+
+    border: 1px solid var(--border);
+
+    border-radius: 16px;
+
+    box-shadow: 0 20px 55px rgba(7, 23, 45, 0.2);
+}
+
+.financial-modal-header {
+    display: flex;
+    justify-content: space-between;
+
+    gap: 20px;
+
+    margin-bottom: 20px;
+}
+
+.modal-badge {
+    display: inline-block;
+
+    padding: 6px 9px;
+
+    background: var(--navy);
+
+    color: var(--white);
+
+    border-radius: 7px;
+
+    font-size: 8px;
+    font-weight: 800;
+}
+
+.financial-modal-header h2 {
+    margin: 9px 0 4px;
+
+    color: var(--text);
+
+    font-size: 21px;
+}
+
+.financial-modal-header p {
+    margin: 0;
+
+    color: var(--muted);
+
+    font-size: 10px;
+}
+
+.financial-modal-close {
+    width: 36px;
+    height: 36px;
+
+    display: grid;
+    place-items: center;
+
+    flex: 0 0 auto;
+
+    border: 0;
+
+    border-radius: 8px;
+
+    background: var(--soft-bg);
+
+    color: var(--text);
+
+    cursor: pointer;
+}
+
+.financial-modal-close:hover {
+    background: var(--navy);
+
+    color: var(--white);
+}
+
+
+/* =========================================================
+   FORM
+   ========================================================= */
+
+.financial-form-grid {
+    display: grid;
+
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+
+    gap: 15px;
+}
+
+.financial-form-group.full-width {
+    grid-column: 1 / -1;
+}
+
+.financial-form-group label {
+    display: block;
+
+    margin-bottom: 5px;
+
+    color: #344054;
+
+    font-size: 10px;
+    font-weight: 700;
+}
+
+.financial-form-group input,
+.financial-form-group select,
+.financial-form-group textarea {
+    box-sizing: border-box;
+
+    width: 100%;
+
+    padding: 10px 11px;
+
+    background: var(--white);
+
+    color: var(--text);
+
+    border: 1px solid var(--border-dark);
+
+    border-radius: 8px;
+
+    outline: none;
+
+    font-family: inherit;
+    font-size: 11px;
+}
+
+.financial-form-group textarea {
+    resize: vertical;
+}
+
+.financial-form-group input:focus,
+.financial-form-group select:focus,
+.financial-form-group textarea:focus {
+    border-color: var(--navy);
+
+    box-shadow: 0 0 0 3px rgba(11, 31, 58, 0.07);
+}
+
+.financial-amount-input {
+    display: flex;
+    align-items: center;
+
+    border: 1px solid var(--border-dark);
+
+    border-radius: 8px;
+
+    overflow: hidden;
+}
+
+.financial-amount-input:focus-within {
+    border-color: var(--navy);
+}
+
+.financial-amount-input span {
+    padding-left: 11px;
+
+    color: var(--muted);
+
+    font-weight: 700;
+}
+
+.financial-amount-input input {
+    border: 0;
+}
+
+.financial-modal-actions {
+    display: flex;
+    justify-content: flex-end;
+
+    gap: 8px;
+
+    margin-top: 20px;
+
+    padding-top: 17px;
+
+    border-top: 1px solid var(--border);
+}
+
+.financial-cancel-btn,
+.financial-save-btn {
+    padding: 10px 15px;
+
+    border: 0;
+
+    border-radius: 8px;
+
+    font-family: inherit;
+
+    font-size: 11px;
+    font-weight: 700;
+
+    cursor: pointer;
+}
+
+.financial-cancel-btn {
+    background: var(--soft-bg);
+
+    color: var(--text);
+}
+
+.financial-save-btn {
+    background: var(--navy);
+
+    color: var(--white);
+}
+
+
+/* =========================================================
+   TOAST
+   ========================================================= */
+
+.financial-toast {
+    position: fixed;
+
+    right: 22px;
+    bottom: 22px;
+
+    z-index: 100000;
+
+    display: flex;
+    align-items: center;
+
+    gap: 10px;
+
+    width: min(360px, calc(100vw - 30px));
+
+    padding: 12px;
+
+    background: var(--white);
+
+    border: 1px solid var(--border);
+
+    border-radius: 11px;
+
+    box-shadow: 0 12px 35px rgba(11, 31, 58, 0.15);
+}
+
+.toast-icon {
+    width: 34px;
+    height: 34px;
+
+    display: grid;
+    place-items: center;
+
+    border-radius: 8px;
+
+    background: #ecfdf3;
+
+    color: var(--green);
+}
+
+.toast-content {
+    display: flex;
+    flex-direction: column;
+
+    gap: 2px;
+
+    flex: 1;
+}
+
+.toast-content strong {
+    color: var(--text);
+
+    font-size: 11px;
+}
+
+.toast-content span {
+    color: var(--muted);
+
+    font-size: 9px;
+}
+
+#closeToastBtn {
+    width: 28px;
+    height: 28px;
+
+    border: 0;
+
+    background: transparent;
+
+    color: var(--muted);
+
+    cursor: pointer;
+}
+
+#closeToastBtn:hover {
+    background: var(--soft-bg);
+
+    color: var(--navy);
+}
+
+
+/* =========================================================
+   LOADING / JS COMPATIBILITY
+   ========================================================= */
+
+#openAddTransactionBtn {
+    position: relative;
+    z-index: 1000;
+
+    pointer-events: auto !important;
+
+    cursor: pointer !important;
+}
+
+#transactionModal {
+    display: none;
+
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 99999;
+}
+
+#transactionModal.show {
+    display: block !important;
+}
+
+#modalOverlay {
+    position: absolute;
+
+    inset: 0;
+
+    z-index: 1;
+}
+
+#transactionModal .financial-modal-content {
+    position: relative;
+
+    z-index: 2;
+}
+
+
+/* =========================================================
+   RESPONSIVE — TABLET
+   ========================================================= */
+
+@media (max-width: 1050px) {
+
+    .fg-fin-page {
+        padding: 22px;
+    }
+
+    .fg-fin-metrics {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+
+/* =========================================================
+   RESPONSIVE — 850px
+   ========================================================= */
+
+@media (max-width: 850px) {
+
+    .fg-fin-main-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .fg-fin-hero {
+        align-items: flex-start;
+    }
+}
+
+
+/* =========================================================
+   RESPONSIVE — MOBILE
+   ========================================================= */
+
+@media (max-width: 700px) {
+
+    .fg-fin-page {
+        padding: 14px;
+    }
+
+    .fg-fin-hero {
+        flex-direction: column;
+
+        align-items: flex-start;
+
+        padding: 20px;
+
+        border-radius: 14px;
+    }
+
+    .fg-fin-hero h1 {
+        font-size: 25px;
+    }
+
+    .fg-fin-iq {
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .fg-fin-section-head {
+        flex-direction: column;
+
+        align-items: flex-start;
+    }
+
+    .fg-fin-actions {
+        width: 100%;
+    }
+
+    .fg-fin-actions button {
+        flex: 1;
+    }
+
+    .fg-fin-metrics {
+        grid-template-columns: 1fr;
+    }
+
+    .fg-fin-health-score {
+        flex-direction: column;
+
+        text-align: center;
+    }
+
+    .fg-fin-health-stats {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .transaction-item {
+        flex-wrap: wrap;
+    }
+
+    .transaction-meta {
+        width: 100%;
+
+        padding-left: 51px;
+
+        text-align: left;
+    }
+
+    .transaction-amount {
+        margin-left: auto;
+    }
+
+    .fg-fin-security {
+        flex-wrap: wrap;
+    }
+
+    .fg-fin-secure-badge {
+        margin-left: 58px;
+    }
+
+    .financial-form-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .financial-form-group.full-width {
+        grid-column: auto;
+    }
+
+    .financial-modal-content {
+        margin: 10px auto;
+
+        padding: 18px;
+
+        max-height: calc(100vh - 20px);
+    }
+
+    .financial-modal-actions {
+        flex-direction: column-reverse;
+    }
+
+    .financial-cancel-btn,
+    .financial-save-btn {
+        width: 100%;
+    }
+}
+
+
+/* =========================================================
+   VERY SMALL MOBILE
+   ========================================================= */
+
+@media (max-width: 430px) {
+
+    .fg-fin-page {
+        padding: 10px;
+    }
+
+    .fg-fin-hero {
+        padding: 17px;
+    }
+
+    .fg-fin-hero-main {
+        align-items: flex-start;
+
+        gap: 12px;
+    }
+
+    .fg-fin-hero-icon {
+        width: 48px;
+        height: 48px;
+    }
+
+    .fg-fin-hero h1 {
+        font-size: 22px;
+    }
+
+    .fg-fin-health-circle {
+        width: 125px;
+        height: 125px;
+    }
+
+    .fg-fin-health-circle-inner {
+        width: 98px;
+        height: 98px;
+    }
+}
+
+
+/* =========================================================
+   ACCESSIBILITY
+   ========================================================= */
+
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+    outline: 2px solid var(--navy);
+
+    outline-offset: 2px;
+}
+/* =========================================================
+   FINGUARD AI — FINAL WHITE + NAVY OVERRIDE
+   ========================================================= */
+
+:root {
+    --fg-navy: #0b1f3a;
+    --fg-navy-dark: #07172d;
+    --fg-navy-soft: #173a66;
+
+    --fg-white: #ffffff;
+    --fg-page: #ffffff;
+    --fg-soft: #f5f7fa;
+
+    --fg-text: #172033;
+    --fg-muted: #667085;
+    --fg-border: #e4e7ec;
+
+    --fg-green: #16a34a;
+    --fg-red: #dc2626;
+}
+
+
+/* =========================================================
+   MAIN PAGE
+   ========================================================= */
+
+.fg-fin-page {
+    background: #ffffff !important;
+    color: var(--fg-text) !important;
+}
+
+
+/* =========================================================
+   HERO
+   WHITE
+   ========================================================= */
+
+.fg-fin-hero {
+    background: #ffffff !important;
+    color: var(--fg-text) !important;
+
+    border: 1px solid var(--fg-border) !important;
+    box-shadow: 0 5px 20px rgba(11, 31, 58, 0.06) !important;
+}
+
+.fg-fin-hero h1 {
+    color: var(--fg-text) !important;
+}
+
+.fg-fin-hero p {
+    color: var(--fg-muted) !important;
+}
+
+.fg-fin-eyebrow {
+    color: var(--fg-navy) !important;
+}
+
+.fg-fin-hero-icon {
+    background: var(--fg-navy) !important;
+    color: #ffffff !important;
+}
+
+
+/* =========================================================
+   HERO STATUS
+   ========================================================= */
+
+.fg-fin-status {
+    color: var(--fg-muted) !important;
+}
+
+.fg-fin-status-divider {
+    background: #d0d5dd !important;
+}
+
+
+/* =========================================================
+   FINANCIAL IQ
+   NAVY BLOCK
+   ========================================================= */
+
+.fg-fin-iq {
+    background: var(--fg-navy) !important;
+    color: #ffffff !important;
+}
+
+.fg-fin-iq span,
+.fg-fin-iq strong {
+    color: #ffffff !important;
+}
+
+.fg-fin-iq span {
+    color: #d0d8e5 !important;
+}
+
+.fg-fin-iq-icon {
+    background: rgba(255,255,255,0.12) !important;
+    color: #ffffff !important;
+}
+
+
+/* =========================================================
+   SECTION HEAD
+   WHITE BACKGROUND
+   ========================================================= */
+
+.fg-fin-section-head {
+    background: #ffffff !important;
+}
+
+.fg-fin-section-label {
+    color: var(--fg-navy) !important;
+}
+
+.fg-fin-section-head h2 {
+    color: var(--fg-text) !important;
+}
+
+.fg-fin-section-head p {
+    color: var(--fg-muted) !important;
+}
+
+
+/* =========================================================
+   BUTTONS
+   ========================================================= */
+
+.fg-fin-btn-light,
+.fg-fin-small-btn {
+    background: #ffffff !important;
+    color: var(--fg-navy) !important;
+
+    border: 1px solid #d0d5dd !important;
+}
+
+.fg-fin-btn-light:hover,
+.fg-fin-small-btn:hover {
+    background: #f5f7fa !important;
+    color: var(--fg-navy) !important;
+}
+
+.fg-fin-btn-primary {
+    background: var(--fg-navy) !important;
+    color: #ffffff !important;
+
+    border: 1px solid var(--fg-navy) !important;
+}
+
+.fg-fin-btn-primary:hover {
+    background: var(--fg-navy-dark) !important;
+    color: #ffffff !important;
+}
+
+
+/* =========================================================
+   METRIC CARDS
+   WHITE
+   ========================================================= */
+
+.fg-fin-metrics {
+    background: #ffffff !important;
+}
+
+.fg-fin-metric {
+    background: #ffffff !important;
+    color: var(--fg-text) !important;
+
+    border: 1px solid var(--fg-border) !important;
+    box-shadow: 0 5px 18px rgba(11,31,58,0.06) !important;
+}
+
+.fg-fin-metric:hover {
+    background: #ffffff !important;
+}
+
+.fg-fin-metric-icon {
+    background: #eef2f6 !important;
+    color: var(--fg-navy) !important;
+}
+
+.fg-fin-metric-tag {
+    color: #667085 !important;
+}
+
+.fg-fin-metric-body span {
+    color: #667085 !important;
+}
+
+.fg-fin-metric-body strong {
+    color: var(--fg-text) !important;
+}
+
+.fg-fin-metric-footer {
+    color: #667085 !important;
+    border-top-color: #e4e7ec !important;
+}
+
+.fg-fin-metric-footer i {
+    color: var(--fg-navy) !important;
+}
+
+
+/* =========================================================
+   ANALYTICS + HEALTH
+   WHITE
+   ========================================================= */
+
+.fg-fin-main-grid {
+    background: #ffffff !important;
+}
+
+.fg-fin-card {
+    background: #ffffff !important;
+    color: var(--fg-text) !important;
+
+    border: 1px solid var(--fg-border) !important;
+    box-shadow: 0 5px 18px rgba(11,31,58,0.06) !important;
+}
+
+.fg-fin-card-title span {
+    color: var(--fg-navy) !important;
+}
+
+.fg-fin-card-icon {
+    background: #eef2f6 !important;
+    color: var(--fg-navy) !important;
+}
+
+.fg-fin-card h3 {
+    color: var(--fg-text) !important;
+}
+
+.fg-fin-card p {
+    color: var(--fg-muted) !important;
+}
+
+.fg-fin-card-badge {
+    background: var(--fg-navy) !important;
+    color: #ffffff !important;
+}
+
+
+/* =========================================================
+   CATEGORY
+   ========================================================= */
+
+#categoryList {
+    background: #ffffff !important;
+}
+
+.category-item {
+    background: #f7f9fb !important;
+    color: var(--fg-text) !important;
+
+    border: 1px solid #edf0f3 !important;
+}
+
+.category-icon {
+    background: var(--fg-navy) !important;
+    color: #ffffff !important;
+}
+
+.category-info strong {
+    color: var(--fg-text) !important;
+}
+
+.category-info span {
+    color: var(--fg-muted) !important;
+}
+
+.category-amount {
+    color: var(--fg-text) !important;
+}
+
+
+/* =========================================================
+   HEALTH
+   ========================================================= */
+
+.fg-fin-health-circle {
+    background:
+        conic-gradient(
+            var(--fg-navy) var(--health-progress, 0deg),
+            #e8edf3 0
+        ) !important;
+}
+
+.fg-fin-health-circle-inner {
+    background: #ffffff !important;
+}
+
+.fg-fin-health-circle-inner strong {
+    color: var(--fg-text) !important;
+}
+
+.fg-fin-health-circle-inner span {
+    color: var(--fg-muted) !important;
+}
+
+.fg-fin-health-status > span {
+    color: var(--fg-navy) !important;
+}
+
+.fg-fin-health-status h4 {
+    color: var(--fg-text) !important;
+}
+
+.fg-fin-health-status p {
+    color: var(--fg-muted) !important;
+}
+
+.fg-fin-health-stat {
+    background: #f7f9fb !important;
+    border: 1px solid #edf0f3 !important;
+}
+
+.fg-fin-health-stat span {
+    color: var(--fg-muted) !important;
+}
+
+.fg-fin-health-stat strong {
+    color: var(--fg-text) !important;
+}
+
+
+/* =========================================================
+   RECENT TRANSACTIONS
+   IMPORTANT:
+   NAVY SECTION
+   WHITE TEXT
+   ========================================================= */
+
+.fg-fin-transactions {
+    background: var(--fg-navy) !important;
+    color: #ffffff !important;
+
+    border: 0 !important;
+
+    box-shadow: 0 8px 25px rgba(11,31,58,0.15) !important;
+}
+
+
+/* Header */
+
+.fg-fin-transactions .fg-fin-card-title span {
+    color: #aebed1 !important;
+}
+
+.fg-fin-transactions .fg-fin-card-title h3 {
+    color: #ffffff !important;
+}
+
+.fg-fin-transactions .fg-fin-card-title p {
+    color: #b8c6d7 !important;
+}
+
+
+/* Icon */
+
+.fg-fin-transactions .fg-fin-card-icon {
+    background: #173a66 !important;
+    color: #ffffff !important;
+}
+
+
+/* Refresh button */
+
+.fg-fin-transactions .fg-fin-small-btn {
+    background: #ffffff !important;
+    color: var(--fg-navy) !important;
+
+    border: 0 !important;
+}
+
+.fg-fin-transactions .fg-fin-small-btn:hover {
+    background: #eef2f6 !important;
+    color: var(--fg-navy) !important;
+}
+
+
+/* Transaction rows */
+
+#recentTransactionsList {
+    background: transparent !important;
+}
+
+.transaction-item {
+    background: transparent !important;
+
+    border-bottom: 1px solid rgba(255,255,255,0.15) !important;
+}
+
+.transaction-item:last-child {
+    border-bottom: 0 !important;
+}
+
+
+/* Transaction icon */
+
+.transaction-icon {
+    background: #173a66 !important;
+    color: #ffffff !important;
+}
+
+
+/* Transaction text */
+
+.transaction-category {
+    color: #ffffff !important;
+}
+
+.transaction-description {
+    color: #c2cedc !important;
+}
+
+.transaction-meta p {
+    color: #aebdce !important;
+}
+
+
+/* Amount */
+
+.transaction-amount.income {
+    color: #4ade80 !important;
+}
+
+.transaction-amount.expense {
+    color: #ff7b7b !important;
+}
+
+
+/* Loading */
+
+.fg-fin-transactions .fg-fin-loading {
+    color: #d5deea !important;
+}
+
+.fg-fin-transactions .fg-fin-loading i {
+    color: #ffffff !important;
+}
+
+
+/* Empty */
+
+.fg-fin-transactions .fg-fin-empty {
+    color: #d5deea !important;
+}
+
+
+/* =========================================================
+   SECURITY
+   WHITE
+   ========================================================= */
+
+.fg-fin-security {
+    background: #ffffff !important;
+    color: var(--fg-text) !important;
+
+    border: 1px solid var(--fg-border) !important;
+    box-shadow: 0 5px 18px rgba(11,31,58,0.06) !important;
+}
+
+.fg-fin-security-icon {
+    background: var(--fg-navy) !important;
+    color: #ffffff !important;
+}
+
+.fg-fin-security > div:nth-child(2) > span {
+    color: var(--fg-navy) !important;
+}
+
+.fg-fin-security h3 {
+    color: var(--fg-text) !important;
+}
+
+.fg-fin-security p {
+    color: var(--fg-muted) !important;
+}
+
+.fg-fin-secure-badge {
+    background: #ecfdf3 !important;
+    color: var(--fg-green) !important;
+}
+
+
+/* =========================================================
+   MODAL
+   WHITE
+   ========================================================= */
+
+#transactionModal {
+    background: transparent !important;
+}
+
+.financial-modal-overlay {
+    background: rgba(7,23,45,0.68) !important;
+}
+
+.financial-modal-content {
+    background: #ffffff !important;
+    color: var(--fg-text) !important;
+
+    border: 1px solid #e4e7ec !important;
+}
+
+
+/* Modal heading */
+
+.financial-modal-header h2 {
+    color: var(--fg-text) !important;
+}
+
+.financial-modal-header p {
+    color: var(--fg-muted) !important;
+}
+
+.modal-badge {
+    background: var(--fg-navy) !important;
+    color: #ffffff !important;
+}
+
+
+/* Close */
+
+.financial-modal-close {
+    background: #f1f4f8 !important;
+    color: var(--fg-text) !important;
+}
+
+.financial-modal-close:hover {
+    background: var(--fg-navy) !important;
+    color: #ffffff !important;
+}
+
+
+/* =========================================================
+   FORM
+   ========================================================= */
+
+.financial-form-group label {
+    color: #344054 !important;
+}
+
+.financial-form-group input,
+.financial-form-group select,
+.financial-form-group textarea {
+    background: #ffffff !important;
+    color: var(--fg-text) !important;
+
+    border: 1px solid #d0d5dd !important;
+}
+
+.financial-form-group input::placeholder,
+.financial-form-group textarea::placeholder {
+    color: #98a2b3 !important;
+}
+
+.financial-form-group input:focus,
+.financial-form-group select:focus,
+.financial-form-group textarea:focus {
+    background: #ffffff !important;
+
+    border-color: var(--fg-navy) !important;
+
+    box-shadow: 0 0 0 3px rgba(11,31,58,0.08) !important;
+}
+
+.financial-amount-input {
+    background: #ffffff !important;
+    border-color: #d0d5dd !important;
+}
+
+.financial-amount-input span {
+    color: var(--fg-muted) !important;
+}
+
+
+/* Modal buttons */
+
+.financial-cancel-btn {
+    background: #f1f4f8 !important;
+    color: var(--fg-text) !important;
+}
+
+.financial-cancel-btn:hover {
+    background: #e4e7ec !important;
+}
+
+.financial-save-btn {
+    background: var(--fg-navy) !important;
+    color: #ffffff !important;
+}
+
+.financial-save-btn:hover {
+    background: var(--fg-navy-dark) !important;
+}
+
+
+/* =========================================================
+   TOAST
+   WHITE
+   ========================================================= */
+
+.financial-toast {
+    background: #ffffff !important;
+    color: var(--fg-text) !important;
+
+    border: 1px solid #e4e7ec !important;
+}
+
+.toast-content strong {
+    color: var(--fg-text) !important;
+}
+
+.toast-content span {
+    color: var(--fg-muted) !important;
+}
+
+
+/* =========================================================
+   MOBILE TRANSACTION NAVY SECTION
+   ========================================================= */
+
+@media (max-width: 700px) {
+
+    .fg-fin-transactions {
+        background: var(--fg-navy) !important;
+    }
+
+    .transaction-category {
+        color: #ffffff !important;
+    }
+
+    .transaction-description {
+        color: #c2cedc !important;
+    }
+
+    .transaction-meta p {
+        color: #aebdce !important;
+    }
+}
