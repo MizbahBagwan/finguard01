@@ -1,11 +1,4 @@
 
 {
-  "$schema": "https://openapi.vercel.sh/vercel.json",
-  "buildCommand": "pip install -r backend/requirements.txt",
-  "rewrites": [
-    {
-      "source": "/(.*)",
-      "destination": "/backend/app/main.py"
-    }
-  ]
+  "$schema": "https://openapi.vercel.sh/vercel.json"
 }
