@@ -2,11 +2,6 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "buildCommand": "pip install -r backend/requirements.txt",
-  "functions": {
-    "backend/app/main.py": {
-      "runtime": "python3.12"
-    }
-  },
   "rewrites": [
     {
       "source": "/(.*)",
